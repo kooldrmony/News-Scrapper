@@ -30,7 +30,7 @@ $(document).on("click", "p", function() {
       // This section creates a body textarea ody
       $("#comments").append("<textarea id='bodyinput' name='body'></textarea>");
       // This section creates a submit button
-      $("#comments").append("<button data-id='" + data._id + "' id='savenote'>Save Comment</button>");
+      $("#comments").append("<button data-id='" + data._id + "' id='savecomment'>Save Comment</button>");
 
       // This section creates an if statement that defines what to do if there is a comment to post
       if (data.comment) {
@@ -42,7 +42,7 @@ $(document).on("click", "p", function() {
 });
 
 // This section sets up a document .on click event for to save the comment
-$(document).on("click", "#savenote", function() {
+$(document).on("click", "#savecomment", function() {
   
   var thisId = $(this).attr("data-id");
 
