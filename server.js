@@ -9,6 +9,23 @@ var db = require("./models");
 
 var PORT = 3000;
 
+// var uri = "mongodb://heroku_pl1nb0sf:r142orvjvuo1m0gh09bt18e7a7@ds215089.mlab.com:15089/heroku_pl1nb0sf";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_pl1nb0sf:r142orvjvuo1m0gh09bt18e7a7@ds215089.mlab.com:15089/heroku_pl1nb0sf";
+
+// var options = {
+//   "server" : {
+//     "socketOptions" : {
+//       "keepAlive" : 300000,
+//       "connectTimeoutMS" : 30000
+//     }
+//   },
+//   "replset" : {
+//     "socketOptions" : {
+//       "keepAlive" : 300000,
+//       "connectTimeoutMS" : 30000
+//     }
+//   }
+// }
 // This section iInitializes the Express npm package
 var app = express();
 
@@ -20,7 +37,12 @@ app.use(express.static("public"));
 
 // This section sets up the connection to the "si" database in MongoDB
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/si");
+mongoose.connect(MONGODB_URI);
+
+// var database = mongoose.connect;
+
+// database.on('error', console.error.bind(console, 'connection error:'));
+
 
 // This section sets up the routes that are to be used/called
 
@@ -32,8 +54,8 @@ app.get("/scrape", function(req, res) {
   
     var $ = cheerio.load(response.data);
 
-    // This section sets up waht to scrape from the website
-    $("article h2 div").each(function(i, element) {
+    // This section sets up what to scrape from the website
+    $("article h2").each(function(i, element) {
       
       var result = {};
 
@@ -42,8 +64,8 @@ app.get("/scrape", function(req, res) {
         .children("a")
         .text();
       result.summary = $(this)
-        .children("div")
-        .attr("class");
+        .parent("div")
+        .text();
       result.url = $(this)
         .children("a")
         .attr("href");
