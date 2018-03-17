@@ -33,7 +33,7 @@ app.get("/scrape", function(req, res) {
     var $ = cheerio.load(response.data);
 
     // This section sets up waht to scrape from the website
-    $("article h2").each(function(i, element) {
+    $("article h2 div").each(function(i, element) {
       
       var result = {};
 
@@ -41,9 +41,9 @@ app.get("/scrape", function(req, res) {
       result.headline = $(this)
         .children("a")
         .text();
-      // result.summary = $(this)
-      //   .children("div")
-      //   .attr("class");
+      result.summary = $(this)
+        .children("div")
+        .attr("class");
       result.url = $(this)
         .children("a")
         .attr("href");

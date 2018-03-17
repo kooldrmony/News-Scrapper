@@ -3,10 +3,9 @@ $.getJSON("/stories", function(data) {
   // This section runs a for loop for the data returned from the database
   for (var i = 0; i < data.length; i++) {
     // This section sets up what to display on the page from the information pulled
-    $("#stories").append("<p data-id='" + data[i]._id + "'>" + data[i].headline + "<br />" + data[i].url + "</p>");
+    $("#stories").append("<p data-id='" + data[i]._id + "'>" + data[i].headline + "<br />" + data.summary + "<br />" + data[i].url + "</p>");
   }
 });
-
 
 // This section sets up the jQuery portion of the frontend 
 $(document).on("click", "p", function() {

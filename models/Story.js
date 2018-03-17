@@ -12,10 +12,10 @@ var StorySchema = new Schema({
     required: true
   },
 
-  // summary: {
-  //   type: String,
-  //   required: true
-  // },
+  summary: {
+    type: String,
+    required: true
+  },
 
   url: {
     type: String,
