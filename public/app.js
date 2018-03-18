@@ -23,7 +23,7 @@ $(document).on("click", "p", function() {
     .then(function(data) {
       console.log(data);
       // This section sets up an html headline tag 
-      $("#comments").append("<h2>" + data.title + "</h2>");
+      $("#comments").append("<h2>" + data.headline + "</h2>");
       // This section sets up an input field 
       $("#comments").append("<input id='titleinput' name='title' >");
       // This section creates a body textarea ody
