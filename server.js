@@ -3,9 +3,10 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-var axios = require("axios");
+// var axios = require("axios");
 var cheerio = require("cheerio");
 var db = require("./models");
+var request = require('request');
 
 var PORT = 3000;
 
@@ -50,7 +51,12 @@ mongoose.connect("mongodb://localhost/si");
 //Using axios and cheerio
 app.get("/scrape", function(req, res) {
 
-  axios.get("http://www.si.com/").then(function(response) {
+  request('http://www.si.com', function (error, response, body) {
+  console.log('error:', error); // Print the error if one occurred
+  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  console.log('body:', body); // Print the HTML for the Google homepage.
+
+  // axios.get("http://www.si.com/").then(function(response) {
   
     var $ = cheerio.load(response.data);
 
