@@ -10,6 +10,8 @@ var request = require('request');
 
 var PORT = 3000;
 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://<heroku_pl1nb0sf>:<Derrick#21>@ds215089.mlab.com:15089/heroku_pl1nb0sf";
+
 // var uri = "mongodb://heroku_pl1nb0sf:r142orvjvuo1m0gh09bt18e7a7@ds215089.mlab.com:15089/heroku_pl1nb0sf";
 // var MONGODB_URI = process.env.MONGODB_URI || "mongo ds215089.mlab.com:15089/heroku_pl1nb0sf -u <dbuser> -p <dbpassword>";
 
@@ -38,7 +40,7 @@ app.use(express.static("public"));
 
 // This section sets up the connection to the "si" database in MongoDB
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/si");
+mongoose.connect(MONGODB_URI);
 
 // var database = mongoose.connect;
 
