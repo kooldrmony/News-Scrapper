@@ -50,9 +50,11 @@ app.get("/scrape", function(req, res) {
       result.headline = $(this)
         .children("a")
         .text();
-      result.summary = $(this)
-        .children("div")
+      //This section is supposed to srape the summary of the article but it is not working     
+      result.summary = $("div[class=summary margin-8-bottom]")
         .text();
+      //   .children("div")
+      //   .attr("class");
       result.url = $(this)
         .children("a")
         .attr("href");
