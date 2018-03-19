@@ -10,7 +10,7 @@ var request = require('request');
 
 var PORT = 3000;
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_pl1nb0sf:Derrick#21@ds215089.mlab.com:15089/heroku_pl1nb0sf";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://<dbuser>:<dbpassword>@ds215089.mlab.com:15089/heroku_pl1nb0sf";
 
 // var uri = "mongodb://heroku_pl1nb0sf:r142orvjvuo1m0gh09bt18e7a7@ds215089.mlab.com:15089/heroku_pl1nb0sf";
 // var MONGODB_URI = process.env.MONGODB_URI || "mongo ds215089.mlab.com:15089/heroku_pl1nb0sf -u <dbuser> -p <dbpassword>";
@@ -144,6 +144,6 @@ app.post("/stories/:id", function(req, res) {
 });
 
 // This section sets up the app.listen function that enables the server
-app.listen(PORT, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log("App running on port " + PORT + "!");
 });
