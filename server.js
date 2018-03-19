@@ -12,23 +12,6 @@ var PORT = 3000;
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://<dbuser>:<dbpassword>@ds215089.mlab.com:15089/heroku_pl1nb0sf";
 
-// var uri = "mongodb://heroku_pl1nb0sf:r142orvjvuo1m0gh09bt18e7a7@ds215089.mlab.com:15089/heroku_pl1nb0sf";
-// var MONGODB_URI = process.env.MONGODB_URI || "mongo ds215089.mlab.com:15089/heroku_pl1nb0sf -u <dbuser> -p <dbpassword>";
-
-// var options = {
-//   "server" : {
-//     "socketOptions" : {
-//       "keepAlive" : 300000,
-//       "connectTimeoutMS" : 30000
-//     }
-//   },
-//   "replset" : {
-//     "socketOptions" : {
-//       "keepAlive" : 300000,
-//       "connectTimeoutMS" : 30000
-//     }
-//   }
-// }
 // This section iInitializes the Express npm package
 var app = express();
 
@@ -38,14 +21,9 @@ app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// This section sets up the connection to the "si" database in MongoDB
+// This section sets up the connection to the "si" database in MongoDB by passing in the MONGODB_URI variable from above
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
-
-// var database = mongoose.connect;
-
-// database.on('error', console.error.bind(console, 'connection error:'));
-
 
 // This section sets up the routes that are to be used/called
 
