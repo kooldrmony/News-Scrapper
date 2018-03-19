@@ -41,7 +41,8 @@ app.get("/scrape", function(req, res) {
     var $ = cheerio.load(response.data);
 
     // This section sets up what to scrape from the website
-    $("article h2").each(function(i, element) {
+    $("article h2 div").each(function(i, element) {
+      // var article = $(element).find('a').find('img').attr('src');
       
       var result = {};
 
@@ -50,7 +51,7 @@ app.get("/scrape", function(req, res) {
         .children("a")
         .text();
       result.summary = $(this)
-        .parent("div")
+        .children("div")
         .text();
       result.url = $(this)
         .children("a")
