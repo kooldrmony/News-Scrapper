@@ -13,10 +13,8 @@ The following programs/technologies were used in creating of this application:
 1. NodeJS
 2. ExpressJS
 3. Heroku
-4. Handlebars
-5. MYSQL
-6. ORM
+4. MongoDB
 
 ## **NPM Packages Used**
 
-There were several NPM packages used in this application which are Method-Override, Express and Body-Parser.
+This application utilizes several NPM packages with in the application. The NPM packages used are Express, Body-{arser, Logger, Mongoose, Cheerio and Request.
